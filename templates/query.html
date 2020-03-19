@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if data %}
+{% for i in data %}
+<hr>
+<p>{{i.name}}. {{i.surname}} {{i.email}}, {{i.phone}}</p>
+<p>{{i.message}}</p>
+<a href="{{ url_for('delete', id=i['id']) }}">Ištrinti</a>
+<a href="{{ url_for('update', id=i['id']) }}">Redaguoti</a>
+{% endfor %}
+{% endif %}
+<hr>
+<p><a href="{{ url_for('index')}}">Naujas įrašas</a></p>
+
+{% endblock %}
