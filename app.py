@@ -58,12 +58,6 @@ def delete(id):
 def update(id):
     form = QueryForm()
     uzklausa = Query.query.get(id)
-    print("Redaguojama", uzklausa)
-    # form.name.data = uzklausa.name
-    # form.surname.data = uzklausa.surname
-    # form.email.data = uzklausa.email
-    # form.phone.data = uzklausa.phone
-    # form.message.data = uzklausa.message
     if form.validate_on_submit():
         uzklausa.name = form.name.data
         uzklausa.surname = form.surname.data
@@ -72,7 +66,7 @@ def update(id):
         uzklausa.message = form.message.data
         db.session.commit()
         return query()
-    return render_template("update.html", form=form)
+    return render_template("update.html", form=form, uzklausa=uzklausa)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8000, debug=True)
